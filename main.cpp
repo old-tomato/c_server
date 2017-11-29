@@ -33,7 +33,6 @@ int doWork(string route , string content , string ** result){
 int afterGetDataCallBack(uv_stream_t * client , const uv_buf_t * buf){
     HttpHelper helper(buf->base);
 
-
     string content = helper.getContent();
     string route = helper.getRoute();
     cout << content << endl;
@@ -45,10 +44,10 @@ int afterGetDataCallBack(uv_stream_t * client , const uv_buf_t * buf){
 
     cout << *resultData << endl;
 
-    string data = helper.responseJson(200 , *resultData);
-    uv_write_t * uvw = new uv_write_t;
-    uv_buf_t bufBack = uv_buf_init(const_cast<char *>(data.c_str()), data.length());
-    uv_write(uvw , client , &bufBack , 1 , onAfterWrite);
+//    string data = helper.responseJson(200 , *resultData);
+//    uv_write_t * uvw = new uv_write_t;
+//    uv_buf_t bufBack = uv_buf_init(const_cast<char *>(data.c_str()), data.length());
+//    uv_write(uvw , client , &bufBack , 1 , onAfterWrite);
 
     return 0;
 }
